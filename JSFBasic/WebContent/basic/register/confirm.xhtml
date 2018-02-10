@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="/common/lnf-template.xhtml">
+	
+		<ui:define name="title"> A Simple JavaServer Faces Registration Application</ui:define>
+		
+		<ui:define name="body">
+		
+			<h:form>
+			
+				<p><h:messages /></p>
+			
+				<table>
+					<tr>
+						<td>
+							<h2>JSF Registration</h2>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h4>Registration Form</h4>
+						</td>
+					</tr>
+					<tr>
+						<td><h:outputText> Sucessfully added new user</h:outputText></td>
+					</tr>
+					<tr>
+						<td>First Name:</td>
+						<td><h:outputText value="#{userBean.firstName}" /></td>
+					</tr>
+					<tr>
+						<td>First Name Redirect Flash:</td>
+						<td><h:outputText value="#{flash.keep.firstName}" /></td>
+					</tr>
+					<tr>
+						<td>Last Name:</td>
+						<td><h:outputText value="#{userBean.lastName}" /></td>
+					</tr>
+					<tr>
+						<td>Last Name Redirect Flash:</td>
+						<td><h:outputText value="#{flash.keep.lastName}" /></td>
+					</tr>
+					<tr>
+						<td>Sex:</td>
+						<td><h:outputText value="#{userBean.sex}" /></td>
+					</tr>
+					<tr>
+						<td>Date of Birth:</td>
+						<td><h:outputText value="#{userBean.dob}" /></td>
+					</tr>
+					<tr>
+						<td>Email Address:</td>
+						<td><h:outputText value="#{userBean.email}" /></td>
+					</tr>
+					<tr>
+						<td>Service Level:</td>
+						<td><h:outputText value="#{userBean.serviceLevel}" /></td>
+					</tr>
+				</table>
+				
+				<h:commandButton value="Index" action="index" />
+				<h:commandButton value="Edit" action="register" />
+				<h:commandButton value="Edit With Redirect" action="register?faces-redirect=true" />
+				<h:commandButton value="Confirm" action="#{userBean.addConfirmedUser}" />
+				<h:commandButton value="Confirm with redirect" action="#{userBean.addConfirmedUserRedirect}" />
+				
+				<!-- Test: flash implicit object -->
+				
+				<h2>Flash Objects</h2>
+				<h:outputText value="FLASH: #{flash.listaTeste}" />
+				<br /> 
+				<h:outputText value="FLASH: #{flash.mapTeste}" />
+				<br /> 
+				<h:outputText value="FLASH: #{flash.listaTeste}" />
+				<br /> 
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

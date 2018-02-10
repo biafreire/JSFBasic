@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<body>
+	<ui:composition template="/common/lnf-template.xhtml">
+		
+		<ui:define name="title"> JavaServer Faces - Converter and Validation</ui:define>
+		
+		<ui:define name="body">
+		
+			<h:form>
+				<h3>JavaServer Faces - Converter and Validation - NUMBER</h3>
+				
+				<p>
+					<h:commandButton value="Index" action="index" immediate="true" />
+					<h:commandButton value="Date Time" action="converterValidationTest" />
+					<h:commandButton value="Number" action="converterValidationNumberTest" />
+					<h:commandButton value="Converter Id" action="converterValidationConverterIdTest" />
+				</p>
+				
+				<table width="70%">
+				
+					<tr>
+						<td><h:outputText value = "Number: #{converterValidationBean.numberConverter}">
+								<f:convertNumber type="number" maxIntegerDigits="4"/></h:outputText></td>
+						<td><h:inputText
+								label="Number Converter"
+								id="numberConverter" 
+								value="#{converterValidationBean.numberConverter}">
+								<f:convertNumber type="number" pattern = "##,##,#,##" />
+								</h:inputText>
+								<h:message for="numberConverter" />
+						</td>
+					</tr>
+						
+					<tr>
+						<td><h:outputText value = "Number Currency: #{converterValidationBean.numberConverter}">
+								<f:convertNumber type="currency"  maxFractionDigits="2" groupingUsed="true" /></h:outputText></td>
+						<td><h:inputText
+								label="Number Converter Currency"
+								id="numberConverterCurrency" 
+								value="#{converterValidationBean.numberConverter}">
+								<f:convertNumber type="currency" />
+								</h:inputText>
+								<h:message for="numberConverterCurrency" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value = "Number Currency: #{converterValidationBean.numberConverter}">
+								<f:convertNumber type="percent"  maxFractionDigits="2" /></h:outputText></td>
+						<td><h:inputText
+								label="Number Converter percentage"
+								id="numberConverterPercentage" 
+								value="#{converterValidationBean.numberConverter}">
+								<f:convertNumber type="percent" />
+								</h:inputText>
+								<h:message for="numberConverterPercentage" />
+						</td>
+					</tr>
+							
+					<tr><td>######################################</td></tr>
+					
+				</table>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

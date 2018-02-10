@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<body>
+	<ui:composition template="/common/lnf-template.xhtml">
+		
+		<ui:define name="title">JavaServer Faces - Converter and Validation</ui:define>
+		
+		<ui:define name="body">
+		
+			<h:form>
+				<h3>JavaServer Faces - Converter and Validation - DATE TIME</h3>
+				
+				<p>
+					<h:commandButton value="Index" action="index" immediate="true" />
+					<h:commandButton value="Date Time" action="converterValidationTest" />
+					<h:commandButton value="Number" action="converterValidationNumberTest" />
+					<h:commandButton value="Converter Id" action="converterValidationConverterIdTest" />
+				</p>
+				
+				<table width="70%">
+				
+					<tr>
+						<td><h:outputText value = "Date Time Short: #{converterValidationBean.dateTimeConverter}">
+								<f:convertDateTime type="date" dateStyle = "short" locale = "ru" ></f:convertDateTime></h:outputText></td>
+						<td><h:inputText
+								label="Date Time Converter"
+								id="dateTimeShort"
+								value="#{converterValidationBean.dateTimeConverter}"
+								required="true">
+								<f:convertDateTime type="date" dateStyle = "short" ></f:convertDateTime>
+							</h:inputText> 
+							<h:message for="dateTimeShort" />
+						</td>
+					</tr>
+					
+					<tr><td><h:outputText value = "Date Time Medium: #{converterValidationBean.dateTimeConverter}">
+								<f:convertDateTime type="date" dateStyle = "medium" ></f:convertDateTime></h:outputText></td>
+						<td><h:inputText size="50"
+								label="Date Time Converter"
+								id="dateTimeMedium"
+								value="#{converterValidationBean.dateTimeConverter}"
+								required="true">
+								<f:convertDateTime type="date" dateStyle = "medium" ></f:convertDateTime>
+							</h:inputText> 
+							<h:message for="dateTimeLongMedium" />
+						</td>
+					</tr>
+					
+					<tr><td><h:outputText value = "Date Time Long: #{converterValidationBean.dateTimeConverter}">
+								<f:convertDateTime type="date" dateStyle = "long" ></f:convertDateTime></h:outputText></td>
+						<td><h:inputText size="50"
+								label="Date Time Converter"
+								id="dateTimeLong"
+								value="#{converterValidationBean.dateTimeConverter}"
+								required="true">
+								<f:convertDateTime type="date" dateStyle = "long" pattern = "yy.dd.MM - hh:mm:ss a zz"></f:convertDateTime>
+							</h:inputText> 
+							<h:message for="dateTimeLong" />
+						</td>
+					</tr>
+					
+					<tr><td><h:outputText value = "Date Time Full: #{converterValidationBean.dateTimeConverter}">
+								<f:convertDateTime type="date" dateStyle = "full" ></f:convertDateTime></h:outputText></td>
+						<td><h:inputText size="50"
+								label="Date Time Converter"
+								id="dateTimeFull"
+								value="#{converterValidationBean.dateTimeConverter}"
+								required="true">
+								<f:convertDateTime type="date" dateStyle = "full"></f:convertDateTime>
+							</h:inputText> 
+							<h:message for="dateTimeFull" />
+						</td>
+					</tr>
+					
+					<tr><td><h:outputText value = "Date Time Full TYPE [time]: #{converterValidationBean.dateTimeConverter}">
+								<f:convertDateTime type="time" timeStyle = "full" ></f:convertDateTime></h:outputText></td>
+						<td><h:inputText size="50"
+								label="Date Time Converter"
+								id="dateTimeFullTime"
+								value="#{converterValidationBean.dateTimeConverter}"
+								required="true">
+								<f:convertDateTime type="time" timeStyle = "full"></f:convertDateTime>
+							</h:inputText> 
+							<h:message for="dateTimeFullTime" />
+						</td>
+					</tr>
+								
+								
+					<tr><td>######################################</td></tr>
+					
+				</table>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

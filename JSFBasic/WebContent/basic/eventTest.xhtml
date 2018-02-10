@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<body>
+	<ui:composition template="/common/lnf-template.xhtml">
+		<ui:define name="title">JavaServer Faces - Event Test</ui:define>
+		<ui:define name="body">
+
+			<f:event listener="#{eventTestBean.preRenderViewTest}" type="preRenderView"></f:event>
+		
+			<h:form id="form">
+			
+				<h3>JavaServer Faces - Event Test</h3>
+				
+				<h:messages globalOnly="true" />
+				
+				<p>
+					<h:commandButton value="Index" action="index" immediate="true"/>
+					<h:commandButton value="Teste" action="eventTest" />
+				</p>
+				
+				<table width="70%">
+					
+					<tr>
+						<td>First Name:</td>
+						<td><h:inputText size="50"
+								label="firstName"
+								id="firstName"
+								value="#{eventTestBean.firstName}" 
+								required="true"/> 
+								<h:message for="firstName" /></td>
+						<td><h:outputText value = "#{eventTestBean.firstName}"></h:outputText></td>
+					</tr>
+					
+					<tr>
+						<td>Zip Code:</td>
+						<td><h:inputText size="50"
+								label="zipCode"
+								id="zipCode"
+								value="#{eventTestBean.zipCode}" 
+								valueChangeListener="#{eventTestBean.valueChangeListener}"
+								onchange="submit()">
+							</h:inputText>
+								<h:message for="zipCode" /></td>
+						<td><h:outputText value = "#{eventTestBean.zipCode}"></h:outputText></td>
+					</tr>
+					
+				</table>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:test="http://java.sun.com/jsf/composite/example">
+	
+	<h:head>
+	     <title>Component Test</title>
+	 </h:head>
+		 
+	 <h:body>
+	 
+			<test:calculator firstNumber = "#{calculatorBean.firstValue}"
+				secondNumber = "#{calculatorBean.secondValue}"
+				operator = "SUM"
+				buttomOperator = "Sum"
+				indexLabel = "index"
+				goIndex = "#{calculatorBean.backToIndex}"
+				valueValidatorMessage = "Enter value. Must be between one and three.">
+				<f:validateLength for="firstNumber" minimun="1" maximun="3"/>
+			</test:calculator>
+		
+			<test:calculator firstNumber = "#{calculatorBean.firstValue}"
+				secondNumber = "#{calculatorBean.secondValue}"
+				operator = "DIF"
+				buttomOperator = "Dif"
+				indexLabel = "index"
+				goIndex = "#{calculatorBean.backToIndex}"/>
+		
+			<test:calculator firstNumber = "#{calculatorBean.firstValue}"
+				secondNumber = "#{calculatorBean.secondValue}"
+				operator = "DIV"
+				buttomOperator = "Div"
+				indexLabel = "index"
+				goIndex = "#{calculatorBean.backToIndex}"/>
+		
+			<test:calculator firstNumber = "#{calculatorBean.firstValue}"
+				secondNumber = "#{calculatorBean.secondValue}"
+				operator = "MUL"
+				buttomOperator = "Mul"
+				indexLabel = "index"
+				goIndex = "#{calculatorBean.backToIndex}"/>
+				
+			<p>	    	
+		    	<h:outputLabel value="Result:" />
+		    	<h:outputText value="#{calculatorBean.result}" />
+		    </p>
+
+	</h:body>
+		
+</html>

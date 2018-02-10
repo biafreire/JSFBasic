@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+    
+	<application>
+		<message-bundle>resources.application</message-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>pt_BR</supported-locale>
+		</locale-config>
+		
+		<default-validators>
+			<validator-id>validatorDefault_1</validator-id>
+			<validator-id>validatorDefault_2</validator-id>
+		</default-validators>
+		
+	</application>
+	
+	
+	 <!-- Test: User bean declaration -->
+    <managed-bean>
+		<managed-bean-name>userBean</managed-bean-name>
+		<managed-bean-class>br.com.jsf.basic.bean.UserBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<!-- Test: Initializing Managed Bean properties -->
+		<managed-property>
+			<property-name>nickName</property-name>
+			<value>Tony</value>
+		</managed-property>
+		<managed-property>
+			<property-name>patName</property-name>
+			<null-value />
+		</managed-property>
+		<!-- Test: Initializing List properties -->
+		<managed-property>
+			<property-name>listaTeste</property-name>
+			<list-entries>
+				<value-class>java.lang.Integer</value-class>
+				<value>11</value>
+				<value>12</value>
+				<value>13</value>
+			</list-entries>
+		</managed-property>
+		<!-- Test: Initializing Map properties -->
+		<managed-property>
+			<property-name>mapTeste</property-name>
+			<map-entries>
+				<map-entry>
+					<key>Car</key>
+					<value>Blue</value>
+				</map-entry>
+				<map-entry>
+					<key>Bicycle</key>
+					<value>Black</value>
+				</map-entry>
+			</map-entries>
+		</managed-property>
+		<!-- Test: Managed Bean Interdependence and Setting Managed Properties Usinf EL-->
+		<managed-property>
+			<property-name>mapTesteBeanProperty</property-name>
+			<value>#{mapTesteBean}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<!-- Test: Declaring Maps Directly as Managed Bean -->
+	<managed-bean>
+		<managed-bean-name>mapTesteBean</managed-bean-name>
+		<managed-bean-class>java.util.HashMap</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+		<map-entries>
+			<map-entry>
+				<key>JSF Central</key>
+				<value>http://www.jsfcentral.com</value>
+			</map-entry>
+			<map-entry>
+				<key>TheServerSide.com</key>
+				<value>http://www.theserverside.com</value>
+			</map-entry>
+			<map-entry>
+				<key>IBM DeveloperWorks</key>
+				<value>http://www.ibm.com/developerworks/</value>
+			</map-entry>
+			<map-entry>
+				<key>Oracle Technology Network</key>
+				<value>http://otn.oracle.com</value>
+			</map-entry>
+			<map-entry>
+				<key>java.net</key>
+				<value>http://www.java.net</value>
+			</map-entry>
+			<map-entry>
+				<key>Manning Publications</key>
+				<value>http://www.manning.com</value>
+			</map-entry>
+		</map-entries>
+	</managed-bean>
+	
+	<!-- Test: Bean instantiate like a property -->
+	<managed-bean>
+		<managed-bean-name>newUserBean</managed-bean-name>
+		<managed-bean-class>br.com.jsf.basic.bean.UserBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>nickName</property-name>
+			<value>Fortaleza</value>
+		</managed-property>
+	</managed-bean>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-action>#{userBean.register}</from-action>
+			<from-outcome>sucess</from-outcome>
+			<to-view-id>/basic/confirm</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{userBean.register}</from-action>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/common/error.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- TEst: Redirct -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>redirectNavigationResult</from-outcome>
+			<to-view-id>/basic/redirect/redirectResult.xhtml</to-view-id>
+			<redirect include-view-params="true">
+				<view-param>
+					<name>testParam</name>
+					<value>Teste Redirect Param XML</value>
+				</view-param>
+			</redirect>
+		</navigation-case>
+	</navigation-rule>
+
+	<converter>
+		<converter-id>simpleConverter</converter-id>
+		<converter-class>br.com.jsf.basic.converter.SimpleConverter</converter-class>
+	</converter>
+	
+	<validator>
+		<validator-id>simpleValidator</validator-id>
+		<validator-class>br.com.jsf.basic.validator.SimpleValidator</validator-class>
+	</validator>
+	
+	<lifecycle>
+		<phase-listener> br.com.jsf.basic.common.PhaseListenerTest</phase-listener>
+	</lifecycle>
+	
+	<!-- Test: Declaration -->
+	<component>
+		<component-type>componentTest</component-type>
+		<component-class>br.com.jsf.basic.common.ComponentTest</component-class>
+	</component>
+	
+	<!-- Test: Declaration -->
+	<factory>
+		<exception-handler-factory>br.com.jsf.basic.common.CustomExceptionHandlerFactoryTest</exception-handler-factory>
+	</factory>
+
+</faces-config>

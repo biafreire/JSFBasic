@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<body>
+
+		<h:form id="form">
+			
+			<h:messages globalOnly="true" />
+				
+			<h:commandButton value="Index" action="index" immediate="true"/>
+				
+			<table>
+				<tr>
+					<td>Test 1) </td>
+				</tr>
+				<tr>
+					<td><h:inputText id="input" value="#{requestScope.input}" /></td>
+					<td><h:commandButton value="submit" /></td>
+					<td>Result: #{requestScope.input}</td>
+				</tr>
+			
+				<tr>
+					<td>Test 2) </td>
+				</tr>
+				<tr>
+					<td><h:inputText id="inputAjax"
+							value="#{requestScope.inputAjax}">
+							<f:ajax render="@form" />
+						</h:inputText>
+					</td>
+					<td>Result: #{requestScope.inputAjax}</td>
+				</tr>
+				
+				<tr>
+					<td>Test 3) </td>
+				</tr>
+				<tr>
+					<td>
+						<f:ajax render="userIdMessage">
+							<h:inputText label="Userid" id="userid" value="#{ajaxBean.message}" required="true"></h:inputText>
+							<h:message id="userIdMessage" for="userid"></h:message>
+						</f:ajax>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Test 4) </td>
+				</tr>
+				<tr>
+					<td>
+						<f:ajax event ="mouseout" >
+							<h:inputText value="#{ajaxBean.message}">
+								<f:ajax even="dblclick" />
+							</h:inputText>
+							<h:commandButton value="submit" action="index" />
+						</f:ajax>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Test 5) </td>
+				</tr>
+				<tr>
+					<td><h:inputText id="inputNewAjax"
+							value="#{requestScope.inputNewAjax}"
+							onchange="jsf.ajax.request(this,event,{render:'@form'}); return false" />
+					</td>
+					<td>Result: #{requestScope.inputNewAjax}</td>
+				</tr>
+			
+				<tr>
+					<td>Test 6) </td>
+				</tr>
+				<tr>
+					<td><h:inputText 
+							label="message"
+							id="message"
+							value="#{ajaxBean.message}">
+							<f:ajax listener="#{ajaxBean.listener}" 
+									execute="@form"
+									render="@form"
+									event="click" />
+						</h:inputText>
+					</td>
+					<td>Ajax Result: #{ajaxBean.message}</td>
+				</tr>
+					
+			</table>
+				
+		</h:form>
+
+	</body>
+</html>

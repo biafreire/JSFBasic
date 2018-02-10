@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<body>
+	<ui:composition template="/common/lnf-template.xhtml">
+		
+		<ui:define name="title">JavaServer Faces - Converter and Validation	</ui:define>
+		
+		<ui:define name="body">
+		
+			<h:form id="form">
+				<h3>JavaServer Faces - Converter and Validation - Converter ID</h3>
+				
+				<p>
+					<h:commandButton value="Index" action="index" immediate="true" />
+					<h:commandButton value="Date Time" action="converterValidationTest" />
+					<h:commandButton value="Number" action="converterValidationNumberTest" />
+					<h:commandButton value="Converter Id" action="converterValidationConverterIdTest" />
+				</p>
+				
+				<table width="70%">
+					
+					<tr>
+						<td>Converter/Validator Identifier:</td>
+						<td><h:inputText size="50"
+								label="Converter Identifier"
+								id="converterIdentifier"
+								value="#{converterValidationBean.converterIdentifier}"
+								converter = "simpleConverter" 
+								validator="simpleValidator"/> 
+								<h:message for="converterIdentifier" /></td>
+								<!-- Registra o converter no componente sem setar qualquer proriedade do converter -->
+						<td><h:outputText value = "#{converterValidationBean.converterIdentifier}"></h:outputText></td>
+					</tr>
+					
+					<tr>
+						<td>Binding Converter/Validator:</td>
+						<td><h:inputText size="50"
+								label="Binding Converter"
+								id="bindingConverter"
+								value="#{converterValidationBean.bindingConverter}" >
+								<f:converter converterId = "converterBinding" />
+								<f:validator validatorId="validatorAnnotation" />
+								<!-- value-binding expression that referenced a converter instance -->
+								<!-- You can achieve the same result by using the < f:converter > tag (from the core JSF library), -->
+								<!-- which accepts only the converter’s identifier. -->
+							</h:inputText>
+								<h:message for="bindingConverter" /></td>
+						<td><h:outputText value = "#{converterValidationBean.bindingConverter}"></h:outputText></td>
+					</tr>
+					
+					<tr>
+						<td>Bean Validator:</td>
+						<td><h:inputText size="50"
+								label="Bean Validator Test"
+								id="beanValidatorTest"
+								value="#{converterValidationBean.beanValidator}" 
+								validator = "#{converterValidationBean.beanValidator}">
+							</h:inputText>
+								<h:message for="beanValidatorTest" /></td>
+						<td><h:outputText value = "#{converterValidationBean.beanValidator}"></h:outputText></td>
+					</tr>
+					
+					<tr><td>######################################</td></tr>
+					
+				</table>
+				
+				<h:messages globalOnly="true" />
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,44 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:cc = "http://java.sun.com/jsf/composite">
+
+	<cc:interface>
+		<cc:attribute name="secondNumber" required = "true"/>
+		<cc:attribute name="operator" required = "true"/>
+		<cc:attribute name="buttomOperator" required = "true"/>
+		<cc:attribute name="valueValidatorMessage" default="Value must be enter with limits!" />
+		<cc:editableValueHolder name="firstNumber" />
+		<cc:attribute name ="indexLabel" />
+		<cc:attribute name ="goIndex" method-signature="java.lang.String action()" />
+	</cc:interface> 
+	
+	<cc:implementation>
+		<h:form>
+			
+			<h:messages for = "#{cc.clientId}" style = "color:red;" />
+			
+			<h:panelGrid columns="8" id="panel">
+		
+				<h:outputLabel value="Value A:" />
+			    <h:inputText id="firstNumber" value="#{cc.attrs.firstNumber}" 
+			    	validatorMessage="#{cc.attrs.valueValidatorMessage}"
+			    	required="true"
+			    	requiredMessage="Value is required!!!"/>
+			    <h:message for="#{cc.clientId}:firstNumber" />
+			    
+			    <h:outputLabel value="Value B:" />
+			    <h:inputText id="secondNumber" value="#{cc.attrs.secondNumber}" />
+		 
+			    <h:commandButton id="goIndex" value="#{cc.attrs.indexLabel}"  immediate="true"
+			    	action="#{cc.attrs.goIndex}" />
+			    
+			    <h:commandButton value="#{cc.attrs.buttomOperator}" 
+			    	action="#{calculatorBean.calculate(cc.attrs.operator)}" />
+			
+		    </h:panelGrid>
+		</h:form>
+	</cc:implementation>
+
+</html>

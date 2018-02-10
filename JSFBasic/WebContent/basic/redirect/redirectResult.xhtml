@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<f:metadata>
+		<f:viewParam name="fName" value="#{redirectBean.firstName}"></f:viewParam>
+		<f:viewParam name="testParam" value="#{testParam}"></f:viewParam>
+	</f:metadata>
+	
+	<h:head>
+		<title>Redirect Result</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p>REdirect Result</p>
+			<p> Value First Name: #{redirectBean.firstName} </p>
+			<p> Test Param: #{testParam} </p>
+			<h:commandButton value="Index" action="index" />
+			<h:commandButton value="Back" action="redirect" />
+		</h:form>
+	</h:body>
+</html>

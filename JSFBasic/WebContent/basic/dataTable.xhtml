@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:head>
+    	<h:outputStylesheet library="css" name="table-style.css"  />
+    </h:head>
+    
+	<h:body>
+	
+		<ui:composition template="/common/lnf-template.xhtml">
+			<ui:define name="title">
+				JavaServer Faces Virtual Trainer Application - DATA TABLE
+			</ui:define>
+			
+			<ui:define name="body">
+			
+				<h:form>
+				
+					<p>	<h:messages /> </p>
+					
+					<h:dataTable id="table" rows="5" value="#{dataTableBean.orderList}" var="o" border="1"
+						styleClass="order-table"
+    					headerClass="order-table-header"
+    					rowClasses="order-table-odd-row,order-table-even-row">
+    					
+    					<f:facet name="caption">Teste Caption</f:facet>
+    					
+						<h:column>
+		    				<f:facet name="header">Order No</f:facet>
+		    				<f:facet name="footer">Footer Test</f:facet>
+		    				<h:outputText value="#{o.orderNo}"/>
+		    			</h:column>
+		
+		    			<h:column>
+		    				<f:facet name="header">Product Name</f:facet>
+		    				<f:facet name="footer">Footer Test</f:facet>
+		    				<h:outputText value="#{o.productName}"/>
+		    			</h:column>
+		
+		    			<h:column>
+		    				<f:facet name="header">Price</f:facet>
+		    				<f:facet name="footer">Footer Test</f:facet>
+		    				<h:outputText value="#{o.price}"/>
+		    			</h:column>
+		
+		    			<h:column>
+		    				<f:facet name="header">Quantity</f:facet>
+		    				<f:facet name="footer">Footer Test</f:facet>
+		    				<h:outputText value="#{o.qty}"/>
+		    			</h:column>
+		    			
+		    			<h:column>
+		    				<f:facet name="header">Delete</f:facet>
+		    				<f:facet name="footer">Footer Test</f:facet>
+		    				<h:commandButton value="Delete" action="#{dataTableBean.delete(o)}" />
+		    			</h:column>
+		    			
+					</h:dataTable> 
+					
+					<h:commandButton value="Index" action="index" immediate="true" />
+					
+				</h:form>
+				
+			</ui:define>
+		</ui:composition>
+		
+	</h:body>
+</html>
