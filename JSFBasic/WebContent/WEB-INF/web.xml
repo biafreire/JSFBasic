@@ -35,6 +35,7 @@ id="WebApp_ID" version="3.0">
   	<param-value>/WEB-INF/tag/loginPanel.taglib.xml</param-value>
   </context-param>
   
+  
   <!-- Test: Declaring container-managed Authentication -->
   <security-constraint>
   	<!-- This element allows to control which parts of your application are subject to authentication -->
@@ -67,7 +68,7 @@ id="WebApp_ID" version="3.0">
   		<form-login-page>/basic/login.xhtml</form-login-page>
   		<form-error-page>/common/error.xhtml</form-error-page>
   	</form-login-config>
-  </login-config>
-  -->
+  </login-config -->
+ 
 
 </web-app>
