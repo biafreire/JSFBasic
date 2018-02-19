@@ -34,5 +34,40 @@ id="WebApp_ID" version="3.0">
   	<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
   	<param-value>/WEB-INF/tag/loginPanel.taglib.xml</param-value>
   </context-param>
+  
+  <!-- Test: Declaring container-managed Authentication -->
+  <security-constraint>
+  	<!-- This element allows to control which parts of your application are subject to authentication -->
+  	<web-resource-collection>
+  		<web-resource-name>trainer page</web-resource-name>
+  		<url-pattern>/trainer/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>trainer</role-name>
+  	</auth-constraint>
+  	<!-- It dictates whisch transport-level security is to be used to protect the resources in the collection -->
+  	<user-data-constraint>
+  	<!-- NONE, CONFIDENTIAL, INTEGRAL -->
+  		<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+  	</user-data-constraint>
+  </security-constraint>
+  <!-- AUTHENTICATION -->
+  <login-config>
+  	<!-- BASIC, FORM, DIGEST, CLIENT CERFIFICATE -->
+  	<auth-method>BASIC</auth-method>
+  	<!-- Pop-up dialog -->
+  	<!-- A realm is an opaque string interpreted by the server to identify a data store for resolving username and password information -->
+  	<realm-name>file</realm-name>
+  </login-config>
+  <!-- 
+  <login-config>
+  	<auth-method>FORM</auth-method>
+  	<realm-name>file</realm-name>
+  	<form-login-config>
+  		<form-login-page>/basic/login.xhtml</form-login-page>
+  		<form-error-page>/common/error.xhtml</form-error-page>
+  	</form-login-config>
+  </login-config>
+  -->
 
 </web-app>
