@@ -69,6 +69,5 @@ id="WebApp_ID" version="3.0">
   		<form-error-page>/common/error.xhtml</form-error-page>
   	</form-login-config>
   </login-config -->
- 
 
 </web-app>
